@@ -183,3 +183,109 @@ and job in('MANAGER','CLERK')
 and mgr is not null
 and ename not like '_L%';
 
+
+--함수
+--문자함수 upper,lower,substr,instr,replace,lpad,rpad,concat
+--숫자함수
+--날짜함수
+
+--upper는 가로안에 문자를 대문자로 변환하여 반환
+select 'Welcome',upper('welcome')
+from dual;
+
+--lower은 가로안에 문자를 소문자로 변환하여 반환
+select lower(ename),upper(ename)
+from emp;
+
+--initcap은 첫글자는 대문자 나머지는 소문자로 변환하여 반환
+select initcap(ename)
+from emp;
+
+select *
+from emp 
+where ename = 'FORD';
+
+select *
+from emp
+where lower(ename) = 'scott';
+
+--이름이 몇자인지 나옴 
+select ename,length(ename)
+from emp;
+
+--숫자로 글자 불러오기 ex 1,13(1~13자리에 있는 글자 변환), ,15(15번째있는 글자만 변환)
+-- 마이너스를 붙이면 뒤에서 부터 오게됨
+--      1234567891011121314151617(공백도 숫자쓰임)
+select 'welcome to Oracle',substr('welcome to Oracle',-3),substr('welcome to Oracle',17)
+from dual;
+
+select 'welcome to Oracle',substr('welcome to Oracle',2,3),substr('welcome to Oracle',17)
+from dual;                                       --2는 시작위치 3은 2뒤에 몇개출력할 개수
+
+-- o위치를 숫자로 표시
+select instr('welcome to Oracle','o')
+from dual;
+
+--제일 가까운 o는 5재지만 뒤에 6을 써서 5보다 뒤에있는 o를 찾음
+select instr('welcome to Oracle','o',6)
+from dual;
+
+select instr('welcome to Oracle','e',3,2)--두번째 입력값은 시작위치, 3번째 입력값은 위치값
+from dual;
+
+select 'welcome to Oracle',replace('welcome to Oracle','to','of')--to를 of로 변경
+from dual;
+
+select 'oracle',lpad('oracle',10,'#'),rpad('oracle',10,'*'),lpad('oracle',10)
+from dual;
+
+select rpad('990103-',14,'*')
+from dual
+
+select concat(empno,ename),empno || '' || ename --두 문자열을 합치는 함수
+from emp;
+
+====숫자====
+
+select  --round는 반올림
+        round(1234.5678),
+        round(1234.5678,0),
+        round(1234.5678,1),
+        round(1234.5678,2),
+        round(1234.5678,-1),
+        round(1234.5678,-2)
+from dual;
+
+select  --trunc는 소수점 뒤자리 버려라~
+        trunc(1234.5678),
+        trunc(1234.5678,0),
+        trunc(1234.5678,1),
+        trunc(1234.5678,2),
+        trunc(1234.5678,-1),
+        trunc(1234.5678,-2)
+from dual;
+
+select
+        ceil(3.14), --자신보다 큰 가장 가까운 정수 4
+        floor(3.14), --자신보다 작은 가장 가까운 정수 3
+        ceil(-3.14), -- -3
+        floor(-3.14) -- -4
+from dual;
+
+select mod(5,2),mod(10,4) --mod(나눗셈될 숫자 , 나눌숫자) 값은 나머지로 출력
+from dual;
+
+select * --사원번로를 2로 나눠서 나머지가 1로나오는것들은 홀수이므로 이렇식으로도 정리 가능
+from emp
+where mod(empno,2) = 1;
+
+
+
+
+
+
+
+
+
+
+
