@@ -1074,6 +1074,7 @@ values(null,'±èÀ¯½Å','salesman',30);
 
 insert into emp02
 values(2222,'¿Áµ¿ÀÚ','salesman',10);
+----------
 
 
 
